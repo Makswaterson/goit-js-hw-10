@@ -4,7 +4,7 @@
   "description": "",
   "homepage": "https://Makswaterson.github.io/goit-js-hw-10",
   "scripts": {
-    "start": "parcel src/*.html --open",
+    "start": "parcel src/*.html",
     "build": "parcel build src/*.html --public-url /goit-js-hw-10/"
   },
   "repository": {
@@ -18,9 +18,7 @@
     "url": "https://github.com/goitacademy/parcel-project-template/issues"
   },
   "dependencies": {
-    "lodash.throttle": "^4.1.1",
-    "modern-normalize": "^1.1.0",
-    "notiflix": "^3.2.5"
+    "modern-normalize": "^1.1.0"
   },
   "devDependencies": {
     "@parcel/transformer-sass": "^2.6.0",

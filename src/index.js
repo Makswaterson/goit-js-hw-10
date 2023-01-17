@@ -13,7 +13,26 @@ const { searchInput, countryList, countryInfo } = refs;
 
 searchInput.addEventListener('input', debounce(onHandleSearch, DEBOUNCE_DELAY));
 
-function onHandleSearch() {}
-
-//   .then(data => {})
-//   .catch(error => {});
+function onHandleSearch(event) {
+  const country = event.target.value.trim().toLowerCase();
+  if (!country) {
+    return;
+  } else {
+    fetchCountries(country)
+      .then(data => {
+        if (data.length > 10) {
+          Notify.info(
+            'Too many matches found. Please enter a more specific name.'
+          );
+        } else if (data.length >= 2 && data.length <= 10) {
+          // Кожен елемент списку складається з прапора та назви країни.;
+        } else {
+          // з даними про країну: прапор, назва, столиця, населення і мови.
+        }
+      })
+      .catch(error => {
+        Notify.failure('Oops, there is no country with that name');
+        console.log(error.message);
+      });
+  }
+}

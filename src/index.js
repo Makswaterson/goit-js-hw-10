@@ -9,6 +9,11 @@ const refs = {
   countryList: document.querySelector('country-list'),
   countryInfo: document.querySelector('country-info'),
 };
+const { searchInput, countryList, countryInfo } = refs;
+
+searchInput.addEventListener('input', debounce(onHandleSearch, DEBOUNCE_DELAY));
+
+function onHandleSearch() {}
 
 //   .then(data => {})
 //   .catch(error => {});

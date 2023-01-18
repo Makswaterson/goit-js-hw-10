@@ -26,9 +26,11 @@ function onHandleSearch(event) {
           );
         } else if (data.length >= 2 && data.length <= 10) {
           const markup = partInfoCountryMarkup(data);
+          console.log(markup);
           countryList.innerHTML = markup;
         } else {
-          // з даними про країну: прапор, назва, столиця, населення і мови.
+          const markup = fullInfoCountryMarkup(data);
+          countryList.innerHTML = markup;
         }
       })
       .catch(error => {
@@ -38,14 +40,6 @@ function onHandleSearch(event) {
   }
 }
 
-// function partInfoCountryMarkup({ flags, name }) {
-//   const markup = `<li class="country-list_item">
-//   <img class="country-list__flags" width="30px" height="20px" src="${flags.svg}" alt="${name.common}">
-//     <p class="country-list__name">${name.official}</p>
-//   </img>
-// </li>`;
-// }
-
 function partInfoCountryMarkup(countries) {
   return countries
     .map(({ flags, name }) => {
@@ -54,6 +48,27 @@ function partInfoCountryMarkup(countries) {
     <p class="country-list__name">${name.official}</p>
   </img>
 </li>`;
+    })
+    .join('');
+}
+
+function fullInfoCountryMarkup(country) {
+  return country
+    .map(({ flags, name, capital, population, languages }) => {
+      return `
+    <div>
+  <img
+    class="country-list__flags"
+    width="30px"
+    height="20px"
+    src="${flags.svg}"
+    alt="${name.common}"
+  />
+  <p class="country-list__name">${name.official}</p>
+  <p>Capital:<span>${capital}</span></p>
+  <p>Population:<span>${population}</span></p>
+  <p>Languages:<span>${languages}</span></p>
+</div>`;
     })
     .join('');
 }

@@ -24,7 +24,7 @@ function onHandleSearch(event) {
         cleanInfoList();
         if (data.length >= 2 && data.length <= 10) {
           console.log(data);
-          // const markup = partInfoCountryMarkup(data);
+
           console.log(markup);
           countryList.innerHTML = partInfoCountryMarkup(data);
         } else if (data.length > 10) {

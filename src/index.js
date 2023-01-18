@@ -25,7 +25,8 @@ function onHandleSearch(event) {
             'Too many matches found. Please enter a more specific name.'
           );
         } else if (data.length >= 2 && data.length <= 10) {
-          // Кожен елемент списку складається з прапора та назви країни.;
+          const markup = partInfoCountryMarkup(data);
+          countryList.innerHTML = markup;
         } else {
           // з даними про країну: прапор, назва, столиця, населення і мови.
         }
@@ -35,4 +36,24 @@ function onHandleSearch(event) {
         console.log(error.message);
       });
   }
+}
+
+// function partInfoCountryMarkup({ flags, name }) {
+//   const markup = `<li class="country-list_item">
+//   <img class="country-list__flags" width="30px" height="20px" src="${flags.svg}" alt="${name.common}">
+//     <p class="country-list__name">${name.official}</p>
+//   </img>
+// </li>`;
+// }
+
+function partInfoCountryMarkup(countries) {
+  return countries
+    .map(({ flags, name }) => {
+      return `<li class="country-list_item">
+  <img class="country-list__flags" width="30px" height="20px" src="${flags.svg}" alt="${name.common}">
+    <p class="country-list__name">${name.official}</p>
+  </img>
+</li>`;
+    })
+    .join('');
 }
